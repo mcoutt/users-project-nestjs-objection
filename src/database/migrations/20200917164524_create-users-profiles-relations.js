@@ -4,8 +4,6 @@ exports.up = async function(knex) {
       .integer('profiles_id')
       .unsigned()
       .references('profiles.id');
-    // table.foreign('profileId').references('id').inTable('users');
-    // table.integer('profileId').references('profiles.id');
   });
 };
 

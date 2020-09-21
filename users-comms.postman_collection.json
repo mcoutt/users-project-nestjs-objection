@@ -41,7 +41,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"name2@domain.com\",\n    \"comment\": \"one big comment\"\n}",
+					"raw": "{\n    \"nickName\": \"Nick2\",\n    \"comment\": \"one big comment\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"

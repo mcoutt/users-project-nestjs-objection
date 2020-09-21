@@ -14,7 +14,7 @@ export class UsersService {
     return this.modelClass
       .query()
       .whereExists(
-        this.modelClass.relatedQuery('profiles').where('nickName', 'Nick')
+        this.modelClass.relatedQuery('profiles').where('nickName', user)
       )
       .first()
 
@@ -22,6 +22,11 @@ export class UsersService {
 
   create(propsUser, propsProfile) {
     return transaction(this.modelClass, async (_, trx) => {
+      const exists = await this.findOne(propsProfile.nickName)
+      if (exists.id) {
+        return 'This user already exists'
+      }
+
       const profile = await this.profilesService.create(propsProfile).transacting(trx)
       propsUser.profilesId = profile.id
       await this.modelClass

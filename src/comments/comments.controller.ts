@@ -8,9 +8,8 @@ export class CommentsController {
 
   @Post()
   async create(@Body() props) {
-    const propsUser = props.email
+    const propsUser = props.nickName
     const propsComment = { "comment": props.comment }
     return this.commentsService.create(propsUser, propsComment);
   }
-
 }

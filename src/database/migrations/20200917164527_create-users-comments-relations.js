@@ -1,7 +1,7 @@
 exports.up = async function(knex) {
   await knex.schema.alterTable('users_comments', table => {
     table
-      .integer('profile_id')
+      .integer('profiles_id')
       .unsigned()
       .references('profiles.id');
     table
@@ -9,14 +9,12 @@ exports.up = async function(knex) {
       .unsigned()
       .references('users.id');
 
-    // table.foreign('profileId').references('id').inTable('users');
-    // table.integer('profileId').references('profiles.id');
   });
 };
 
 exports.down = async function(knex) {
   await knex.schema.alterTable('users_comments', table => {
-    table.dropColumn('profile_id')
+    table.dropColumn('profiles_id')
     table.dropColumn('users_id')
   });
 };
